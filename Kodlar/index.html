@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buwai Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <button class="brand" data-route="home" type="button">
+          <span class="brand-logo">
+            <span class="brand-logo-core">B</span>
+          </span>
+          <span class="brand-copy">
+            <strong id="brandNameLabel">Buwai Studio</strong>
+            <small>Script Kodlama Merkezi</small>
+          </span>
+        </button>
+
+        <nav class="topnav">
+          <button class="nav-link" data-route="home" type="button">Ana Sayfa</button>
+          <button class="nav-link" data-route="hub" type="button">Eğitim/Kodlar</button>
+          <button class="nav-link" data-route="announcements" type="button">Site Mesajları</button>
+          <button class="nav-link admin-only hidden" data-route="dashboard" type="button">
+            Yönetim Paneli
+          </button>
+        </nav>
+
+        <div class="top-actions">
+          <button class="chip-button" id="openCartButton" type="button">
+            Sepet
+            <span id="cartCount">0</span>
+          </button>
+          <button class="chip-button" id="openAuthButton" type="button">Oturum Aç</button>
+        </div>
+      </header>
+
+      <main class="page-shell">
+        <section class="view active" id="homeView">
+          <section class="hero-card">
+            <div class="hero-copy">
+              <p class="eyebrow">Buwai Studio</p>
+              <h1 id="heroTitle">Script Kodlama Merkezi</h1>
+              <p class="hero-text" id="heroText">
+                FiveM, MTA ve Minecraft için eğitimlerini, script kodlarını ve müşteri
+                taleplerini tek merkezden yönet.
+              </p>
+              <div class="hero-actions">
+                <button class="primary-button" data-route="hub" type="button">Başla</button>
+              </div>
+            </div>
+
+            <div class="hero-visual" id="heroVisual">
+              <div class="hero-badge hero-badge-top">Buwai Studio</div>
+              <div class="hero-mark">
+                <div class="hero-mark-ring"></div>
+                <div class="hero-mark-core">B</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="section-block">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Hakkında</p>
+                <h2 id="aboutTitle">Neler Yapıyorum?</h2>
+              </div>
+            </div>
+
+            <div class="about-grid">
+              <article class="panel-card about-card">
+                <div class="about-visual" id="aboutVisual"></div>
+                <div class="form-stack">
+                  <p class="muted" id="aboutText">
+                    FiveM, MTA ve Minecraft için özel script geliştirme, eğitim hazırlama,
+                    satış yönetimi ve müşteri taleplerini tek sistem üzerinden topluyorum.
+                  </p>
+                </div>
+              </article>
+
+              <article class="panel-card developer-card">
+                <div class="about-visual developer-visual" id="developerVisual"></div>
+                <div class="form-stack">
+                  <p class="eyebrow" id="developerRole">Geliştirici</p>
+                  <h3 id="developerName">Buwai_jr</h3>
+                  <p class="muted">
+                    Buwai Studio altyapısını, eğitim düzenini ve mağaza sistemini yöneten kişi.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </section>
+        </section>
+
+        <section class="view" id="hubView">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Eğitim/Kodlar</p>
+              <h2>İçerik alanını seç</h2>
+            </div>
+          </div>
+
+          <div class="feature-grid">
+            <button class="feature-card" data-route="education" type="button">
+              <div class="feature-visual" id="educationVisual"></div>
+              <div class="feature-copy">
+                <h3>Videolar</h3>
+                <p>Liste tabanlı eğitim videoları ve ders akışı.</p>
+              </div>
+            </button>
+
+            <button class="feature-card" data-route="store" type="button">
+              <div class="feature-visual" id="storeVisual"></div>
+              <div class="feature-copy">
+                <h3>Kodlar</h3>
+                <p>Script ürünleri, özet ekranı, sepet ve talep akışı.</p>
+              </div>
+            </button>
+          </div>
+        </section>
+
+        <section class="view" id="educationView">
+          <div class="section-heading split">
+            <div>
+              <p class="eyebrow">Eğitim Alanı</p>
+              <h2>Video listeleri</h2>
+            </div>
+          </div>
+
+          <div class="content-layout">
+            <aside class="panel-card sidebar-panel" id="educationSidebar"></aside>
+
+            <section class="panel-card main-panel">
+              <div class="video-preview" id="videoPreview"></div>
+              <div class="video-meta">
+                <div>
+                  <p class="eyebrow">Seçili Video</p>
+                  <h3 id="videoTitle">Bir video seç</h3>
+                  <p id="videoDescription" class="muted">
+                    Videolar buradan izlenir ve yönetilir.
+                  </p>
+                </div>
+                <span class="notice-pill">YouTube benzeri düzen</span>
+              </div>
+              <div class="content-list" id="videoList"></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="storeView">
+          <div class="section-heading split">
+            <div>
+              <p class="eyebrow">Kodlar</p>
+              <h2>Script vitrin alanı</h2>
+            </div>
+          </div>
+
+          <div class="product-grid" id="productGrid"></div>
+        </section>
+
+        <section class="view" id="announcementsView">
+          <div class="section-heading split">
+            <div>
+              <p class="eyebrow">Site Mesajları</p>
+              <h2>Herkese açık duyuru alanı</h2>
+            </div>
+          </div>
+
+          <div class="stack-list" id="announcementList"></div>
+        </section>
+
+        <section class="view admin-only hidden" id="dashboardView">
+          <div class="section-heading split">
+            <div>
+              <p class="eyebrow">Yönetim Paneli</p>
+              <h2>İçerik, güvenlik ve kullanıcı takibi</h2>
+            </div>
+            <div class="notice-pill">Bu alan yalnızca yöneticiye görünür.</div>
+          </div>
+
+          <div class="stats-grid" id="statsGrid"></div>
+
+          <div class="dashboard-layout">
+            <div class="dashboard-main-column">
+              <section class="panel-card" id="requestPanel"></section>
+              <section class="panel-card" id="contentPanel"></section>
+              <section class="panel-card">
+                <div class="panel-heading">
+                  <h3>Site Ayarları</h3>
+                  <p class="muted">Ana metinleri ve görselleri buradan güncelle.</p>
+                </div>
+
+                <form class="form-stack" id="settingsForm">
+                  <label>
+                    <span>Marka Adı</span>
+                    <input name="brandName" required />
+                  </label>
+                  <label>
+                    <span>Ana Başlık</span>
+                    <input name="heroTitle" required />
+                  </label>
+                  <label>
+                    <span>Ana Açıklama</span>
+                    <textarea name="heroText" rows="4" required></textarea>
+                  </label>
+                  <label>
+                    <span>Üst Görsel URL</span>
+                    <input name="heroImage" required />
+                  </label>
+                  <label>
+                    <span>Hakkında Başlığı</span>
+                    <input name="aboutTitle" required />
+                  </label>
+                  <label>
+                    <span>Hakkında Yazısı</span>
+                    <textarea name="aboutText" rows="4" required></textarea>
+                  </label>
+                  <label>
+                    <span>Hakkında Fotoğraf URL</span>
+                    <input name="aboutImage" required />
+                  </label>
+                  <label>
+                    <span>Geliştirici Adı</span>
+                    <input name="developerName" required />
+                  </label>
+                  <label>
+                    <span>Geliştirici Ünvanı</span>
+                    <input name="developerRole" required />
+                  </label>
+                  <label>
+                    <span>Geliştirici Fotoğraf URL</span>
+                    <input name="developerImage" required />
+                  </label>
+                  <label>
+                    <span>Eğitim Görseli URL</span>
+                    <input name="educationImage" required />
+                  </label>
+                  <label>
+                    <span>Kodlar Görseli URL</span>
+                    <input name="storeImage" required />
+                  </label>
+                  <button class="primary-button" type="submit">Ayarları Kaydet</button>
+                </form>
+              </section>
+            </div>
+
+            <div class="dashboard-side-column">
+              <section class="panel-card" id="usersPanel"></section>
+              <section class="panel-card" id="securityPanel"></section>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal hidden" id="authModal">
+      <div class="modal-card">
+        <button class="modal-close" data-close="authModal" type="button">Kapat</button>
+        <div class="modal-body" id="authModalBody"></div>
+      </div>
+    </div>
+
+    <div class="modal hidden" id="productModal">
+      <div class="modal-card wide">
+        <button class="modal-close" data-close="productModal" type="button">Kapat</button>
+        <div class="modal-body" id="productModalBody"></div>
+      </div>
+    </div>
+
+    <div class="modal hidden" id="cartModal">
+      <div class="modal-card">
+        <button class="modal-close" data-close="cartModal" type="button">Kapat</button>
+        <div class="modal-body" id="cartModalBody"></div>
+      </div>
+    </div>
+
+    <div class="modal hidden" id="editorModal">
+      <div class="modal-card">
+        <button class="modal-close" data-close="editorModal" type="button">Kapat</button>
+        <div class="modal-body" id="editorModalBody"></div>
+      </div>
+    </div>
+
+    <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="true"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -14,7 +14,8 @@
   </head>
   <body>
     <div class="app-shell">
-      <header class="topbar">
+      <header class="topbar" id="topbar">
+        <div class="topbar-head">
         <button class="brand" data-route="home" type="button">
           <span class="brand-logo">
             <span class="brand-logo-core">B</span>
@@ -25,6 +26,23 @@
           </span>
         </button>
 
+          <button
+            class="menu-toggle"
+            id="menuToggleButton"
+            type="button"
+            aria-expanded="false"
+            aria-controls="topbarPanel"
+          >
+            <span class="menu-toggle-lines" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+            <span>Menü</span>
+          </button>
+        </div>
+
+        <div class="topbar-panel" id="topbarPanel">
         <nav class="topnav">
           <button class="nav-link" data-route="home" type="button">Ana Sayfa</button>
           <button class="nav-link" data-route="hub" type="button">Eğitim/Kodlar</button>
@@ -40,6 +58,7 @@
             <span id="cartCount">0</span>
           </button>
           <button class="chip-button" id="openAuthButton" type="button">Oturum Aç</button>
+        </div>
         </div>
       </header>
 

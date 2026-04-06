@@ -255,6 +255,8 @@ const usersPanel = document.getElementById("usersPanel");
 const requestPanel = document.getElementById("requestPanel");
 const contentPanel = document.getElementById("contentPanel");
 const settingsForm = document.getElementById("settingsForm");
+const topbar = document.getElementById("topbar");
+const menuToggleButton = document.getElementById("menuToggleButton");
 const openCartButton = document.getElementById("openCartButton");
 const openAuthButton = document.getElementById("openAuthButton");
 const cartCount = document.getElementById("cartCount");
@@ -414,6 +416,21 @@ function closeModal(modalElement) {
   modalElement.classList.add("hidden");
 }
 
+function isMobileLayout() {
+  return window.matchMedia("(max-width: 760px)").matches;
+}
+
+function closeTopbarMenu() {
+  topbar?.classList.remove("menu-open");
+  menuToggleButton?.setAttribute("aria-expanded", "false");
+}
+
+function toggleTopbarMenu() {
+  if (!topbar || !menuToggleButton) return;
+  const isOpen = topbar.classList.toggle("menu-open");
+  menuToggleButton.setAttribute("aria-expanded", String(isOpen));
+}
+
 function setRoute(route) {
   const nextRoute = route === "dashboard" && !isAdmin() ? "home" : route;
   ui.route = nextRoute;
@@ -425,6 +442,8 @@ function setRoute(route) {
   document.querySelectorAll(".topnav .nav-link").forEach((button) => {
     button.classList.toggle("active", button.dataset.route === nextRoute);
   });
+
+  closeTopbarMenu();
 }
 
 function renderTopbar() {
@@ -1193,6 +1212,11 @@ function renderAll() {
 }
 
 document.addEventListener("click", (event) => {
+  if (event.target.closest("#menuToggleButton")) {
+    toggleTopbarMenu();
+    return;
+  }
+
   const routeButton = event.target.closest("[data-route]");
   if (routeButton) {
     setRoute(routeButton.dataset.route);
@@ -1328,6 +1352,13 @@ document.addEventListener("click", (event) => {
     setRoute("dashboard");
     renderAll();
   }
+});
+
+document.addEventListener("click", (event) => {
+  if (!isMobileLayout()) return;
+  if (!topbar?.classList.contains("menu-open")) return;
+  if (event.target.closest(".topbar")) return;
+  closeTopbarMenu();
 });
 
 document.addEventListener("submit", (event) => {
@@ -1614,13 +1645,19 @@ document.addEventListener("submit", (event) => {
 });
 
 openCartButton.addEventListener("click", () => {
+  closeTopbarMenu();
   renderCartModal();
   openModal(cartModal);
 });
 
 openAuthButton.addEventListener("click", () => {
+  closeTopbarMenu();
   renderAuthModal();
   openModal(authModal);
+});
+
+window.addEventListener("resize", () => {
+  if (!isMobileLayout()) closeTopbarMenu();
 });
 
 touchCurrentUser();

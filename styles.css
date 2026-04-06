@@ -932,11 +932,10 @@ textarea {
 
 @media (max-width: 760px) {
   .app-shell {
-    padding: 16px;
+    padding: 12px;
   }
 
   .topbar,
-  .topnav,
   .top-actions,
   .hero-actions,
   .hero-points,
@@ -951,6 +950,60 @@ textarea {
     align-items: stretch;
   }
 
+  .topbar {
+    top: 8px;
+    gap: 14px;
+    padding: 14px;
+    border-radius: 20px;
+  }
+
+  .brand {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .brand-copy {
+    min-width: 0;
+  }
+
+  .brand-copy strong,
+  .brand-copy small {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .topnav {
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .topnav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-link {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .top-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .chip-button {
+    width: 100%;
+    justify-content: center;
+  }
+
   .feature-grid,
   .product-grid,
   .stats-grid,
@@ -960,18 +1013,115 @@ textarea {
 
   .hero-card {
     min-height: auto;
-    padding: 24px;
+    padding: 20px;
+    border-radius: 26px;
+    gap: 18px;
+  }
+
+  .hero-copy h1 {
+    font-size: 2.25rem;
+    max-width: none;
+  }
+
+  .hero-text {
+    font-size: 0.98rem;
+  }
+
+  .hero-visual {
+    min-height: 280px;
+    border-radius: 22px;
+  }
+
+  .hero-mark {
+    width: 140px;
+    height: 140px;
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .hero-mark-core {
+    inset: 22px;
+    font-size: 2rem;
+  }
+
+  .hero-badge {
+    left: 14px;
+    padding: 10px 12px;
+    font-size: 0.88rem;
+  }
+
+  .about-visual,
+  .developer-visual,
+  .feature-visual {
+    min-height: 210px;
+    height: 210px;
+    border-radius: 20px;
+  }
+
+  .panel-card,
+  .feature-card,
+  .product-card,
+  .announcement-card,
+  .content-card,
+  .stats-card {
+    border-radius: 22px;
+  }
+
+  .content-layout {
+    gap: 14px;
+  }
+
+  .sidebar-panel,
+  .main-panel {
+    padding: 16px;
+  }
+
+  .video-preview,
+  .video-cover-preview,
+  .video-cover-preview img {
+    min-height: 220px;
+  }
+
+  .video-cover-overlay {
+    inset: auto 12px 12px 12px;
   }
 
   .video-item {
     grid-template-columns: 1fr;
+    padding: 10px;
+  }
+
+  .video-thumb {
+    min-height: 170px;
   }
 
   .product-cover-wrap {
-    height: 210px;
+    height: 220px;
+  }
+
+  .stats-card strong {
+    font-size: 1.6rem;
   }
 
   .modal-card {
-    padding-inline: 18px;
+    width: min(100%, calc(100vw - 20px));
+    border-radius: 24px;
+  }
+
+  .modal-close {
+    top: 14px;
+    right: 14px;
+  }
+
+  .toast-stack {
+    right: 12px;
+    left: 12px;
+    bottom: 12px;
+    width: auto;
+  }
+
+  .notice-pill {
+    width: 100%;
+    justify-content: center;
   }
 }

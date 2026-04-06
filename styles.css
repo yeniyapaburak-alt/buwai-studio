@@ -24,6 +24,7 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+  overflow-x: hidden;
   font-family: "Space Grotesk", sans-serif;
   color: var(--text);
   background:
@@ -997,11 +998,12 @@ textarea {
 
   .topbar {
     display: block;
+    position: sticky;
     top: 8px;
     gap: 10px;
     padding: 12px 14px;
     border-radius: 18px;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .topbar-head {
@@ -1014,12 +1016,19 @@ textarea {
 
   .topbar-panel {
     display: none;
-    width: 100%;
-    max-width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 10px);
+    width: auto;
+    max-width: none;
     min-width: 0;
-    margin-top: 12px;
-    padding-top: 12px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    background: rgba(4, 9, 17, 0.96);
+    backdrop-filter: blur(18px);
+    box-shadow: var(--shadow);
   }
 
   .topbar.menu-open .topbar-panel {

@@ -996,56 +996,84 @@ textarea {
   }
 
   .topbar {
+    display: block;
     top: 8px;
     gap: 10px;
     padding: 12px 14px;
     border-radius: 18px;
-    align-items: stretch;
+    overflow: hidden;
   }
 
   .topbar-head {
+    display: flex;
     width: 100%;
     justify-content: space-between;
+    align-items: center;
+    gap: 10px;
   }
 
   .topbar-panel {
     display: none;
     width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin-top: 12px;
     padding-top: 12px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
   }
 
   .topbar.menu-open .topbar-panel {
-    display: flex;
+    display: block;
   }
 
   .brand {
     flex: 1;
     justify-content: flex-start;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .brand-logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    flex: 0 0 auto;
+  }
+
+  .brand-logo::before {
+    inset: 5px;
+    border-radius: 10px;
+  }
+
+  .brand-logo-core {
+    font-size: 1.35rem;
   }
 
   .menu-toggle {
     display: inline-flex;
+    flex: 0 0 auto;
+    padding: 10px 12px;
   }
 
   .brand-copy {
     min-width: 0;
   }
 
-  .brand-copy strong,
-  .brand-copy small {
+  .brand-copy strong {
+    display: block;
+    font-size: 1rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
+  .brand-copy small {
+    display: none;
+  }
+
   .topnav {
+    display: grid;
     width: 100%;
-    flex-direction: column;
-    align-items: stretch;
     gap: 8px;
   }
 
@@ -1058,6 +1086,7 @@ textarea {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
+    gap: 8px;
   }
 
   .chip-button {
